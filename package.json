@@ -1,0 +1,21 @@
+{
+  "name": "coursebot",
+  "version": "0.1.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Phoenix#0408",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.0",
+    "enmap": "^4.8.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
+  }
+}
