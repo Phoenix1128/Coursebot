@@ -8,10 +8,15 @@
 const Discord = require('discord.js');
 const Enmap = require('enmap');
 const fs = require('fs');
+const { MongoClient } = require('mongodb');
 
 // Defining client and config
 const client = new Discord.Client();
 client.config = require('./config.json');
+
+// Defining and attaching the db to the client
+const db = new MongoClient(client.config.dbUrl, { useNewUrlParser: true });
+client.db = db;
 
 // Attaching the bot version to the client so it can be used anywhere
 const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
@@ -60,6 +65,9 @@ client.defaultSettings = {
   prefix: 'c!',
   modrole: 'Moderator',
 };
+
+// Creating the queue for levels
+client.queue = new Enmap({ name: 'queue' });
 
 // Handling errors
 client.on('error', console.error);
