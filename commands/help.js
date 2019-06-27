@@ -4,8 +4,8 @@ module.exports = {
   category: 'help',
   description: "Gives information on the bot's commands!",
   aliases: ['h'],
-  usage: '[command name / category]',
-  args: '[command name / category] => Any of the command names or categories listed in the help command',
+  usage: '[command name]',
+  args: '[command name] => Any of the command names listed in the help command',
   // eslint-disable-next-line consistent-return
   async run(client, message, args) {
     // Setting up stuff for dynamic help
@@ -17,14 +17,17 @@ module.exports = {
     const { prefix } = client.guildConfig;
 
     function cmdCall(categ) {
-      const filter = commands.filter(cmd => cmd.category === categ && cmd.enabled !== false && cmd.owneronly !== true).map(cmd => cmd.name).join('\`, \`');
+      const filter = commands.filter(cmd => cmd.category === categ && cmd.enabled !== false && cmd.owneronly !== true && cmd.modonly !== true).map(cmd => cmd.name).join('\`, \`');
       return filter;
     }
 
+    const modCmds = commands.filter(cmd => cmd.modonly === true).map(cmd => cmd.name).join('\`, \`');
+
     const helpCmds = cmdCall('help');
     const systemCmds = cmdCall('system');
+    const courseCmds = cmdCall('courses');
 
-    const allCmds = `**Help:**\n\`${helpCmds}\`\n\n**System:**\n\`${systemCmds}\``;
+    const allCmds = `**Courses**\n\`${courseCmds}\`\n\n**Help:**\n\`${helpCmds}\`\n\n**System:**\n\`${systemCmds}\`\n\n**Mod Commands:**\n\`${modCmds}\``;
 
     if (!specify) {
       message.channel.send(`**${client.user} Help:**\n\nUse \`${prefix}help [command name]\` to get more information on a command!\n\n${allCmds}\n\n*Be sure to ping or DM Phoenix#0408 for any questions, comments, or feedback!\nBot Version: ${client.version}*`);

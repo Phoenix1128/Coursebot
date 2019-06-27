@@ -13,6 +13,7 @@ const { MongoClient } = require('mongodb');
 // Defining client and config
 const client = new Discord.Client();
 client.config = require('./config.json');
+require('./src/functions.js')(client);
 
 // Defining and attaching the db to the client
 const db = new MongoClient(client.config.dbUrl, { useNewUrlParser: true });
