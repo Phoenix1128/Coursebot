@@ -2,7 +2,7 @@
 /* eslint-disable global-require */
 /* eslint-disable consistent-return */
 
-// Bot Version 0.1.0
+// Bot Version 1.0.1
 
 // Standard importing modules and crap
 const Discord = require('discord.js');
@@ -67,8 +67,8 @@ client.defaultSettings = {
   modrole: 'Moderator',
 };
 
-// Creating the queue for levels
-client.queue = new Enmap({ name: 'queue' });
+// Creating the temp storage of levels
+client.levels = new Enmap({ name: 'levels' });
 
 // Handling errors
 client.on('error', console.error);

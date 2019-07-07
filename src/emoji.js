@@ -45,6 +45,7 @@ module.exports = {
   redX: '❌',
   thumbsupio: '369650564256104450',
   luigipain: '373208808685830145',
+  shorp: '466134998555033611',
   apple: '🍎',
   banana: '🍌',
   cherry: '🍒',
