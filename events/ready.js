@@ -71,7 +71,7 @@ module.exports = (client) => {
 
           client.levels.delete('levelsDB');
 
-          return console.log(`Added ${res.insertedCount} levels and data from to the db!`);
+          return console.log(`Added ${res.insertedCount} level(s) and data to the db!`);
         });
       }
 

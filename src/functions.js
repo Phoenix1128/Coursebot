@@ -11,7 +11,7 @@ module.exports = (client) => {
       }
 
       if (!args[0] || !args[1]) {
-        return message.channel.send(`${emoji.redX} **Invalid Arguments!** Please check to see if the provided aruments are correct!\nProper Usage: \`${client.config.prefix}${cmd} [code] "[title]" "(description)" "(gameStyle)"\`\nEverything in () is optional but everything in [] is mandatory!\n**The quotes are very important so don't forget them!**`);
+        return message.channel.send(`${emoji.redX} **Invalid Arguments!** Please check to see if the provided aruments are correct!\nProper Usage: \`${client.config.prefix}${cmd} [code] "[title]" "(description)" "(misc. info)"\`\nEverything in () is optional but everything in [] is mandatory!\n**The quotes are very important so don't forget them!**`);
       }
 
       const code = args[0].toUpperCase();
@@ -41,7 +41,7 @@ module.exports = (client) => {
       } else if (newArgs[0]) {
         [title] = newArgs;
       } else {
-        return message.channel.send(`${emoji.redX} **Invalid Arguments!** Please check to see if the provided aruments are correct!\nProper Usage: \`${client.config.prefix}${cmd} [code] "[title]" "(description)" "(gameStyle)"\`\nEverything in () is optional but everything in [] is mandatory! Remember to remove the brackets!\n**The quotes are very important so don't forget them!**`);
+        return message.channel.send(`${emoji.redX} **Invalid Arguments!** Please check to see if the provided aruments are correct!\nProper Usage: \`${client.config.prefix}${cmd} [code] "[title]" "(description)" "(misc. info)"\`\nEverything in () is optional but everything in [] is mandatory! Remember to remove the brackets!\n**The quotes are very important so don't forget them!**`);
       }
 
       if (desc.length > 75) {
@@ -129,10 +129,10 @@ module.exports = (client) => {
 
         if (collection === 'Comp') {
           const shorp = client.emojis.find(e => e.name === 'shorp');
-          return message.channel.send(`Here are the submiited levels for the current competition!\n__**Please Note:**__ This may not be an updated list of the Competition collection as it's updated every hour. This ensures minimal connections to the database, helping to reduce the amount of emails I get from MongoDB telling me that I've exceeded the maximum connections they allow ${shorp}\n\n${result}`, { split: true });
+          return message.channel.send(`Here are the submitted levels for the current competition!\n__**Please Note:**__ This may not be an updated list of the Competition collection as it's updated every hour. This ensures minimal connections to the database, helping to reduce the amount of emails I get from MongoDB telling me that I've exceeded the maximum connections they allow ${shorp}\n\n${result}\n\nThere are currently **${result.length} submissions!**`, { split: true });
         }
         if (collection === 'Staff-Levels-(Play)') {
-          return message.channel.send(`Here are the submiited levels from the staff!\n\n${result}`, { split: true });
+          return message.channel.send(`Here are the submitted levels from the staff!\n\n${result}\n\nThere are currently **${result.length} submissions!**`, { split: true });
         }
       });
     });
